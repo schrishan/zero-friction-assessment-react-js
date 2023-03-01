@@ -1,4 +1,4 @@
-import { Alert, Button, Form, Space } from "antd";
+import { Alert, Button, Col, Form, Row, Space } from "antd";
 import { FC } from "react";
 
 interface Props {
@@ -13,41 +13,51 @@ interface Props {
 
 const TopSection: FC<Props> = ({ onCancelClick, onSaveClick, formStatus }) => {
   return (
-    <Space direction="horizontal">
-      <Space direction="horizontal">
-        {formStatus.isInvalid && (
-          <Alert
-            message="Form invalid, please fill the required field"
-            type="error"
-          />
-        )}
-        {!formStatus.isValuesEmpty && (
-          <Alert
-            message="The form has been successfully submitted"
-            type="success"
-          />
-        )}
-      </Space>
-      <Space direction="horizontal">
-        {formStatus.isTouched && (
+    <Row justify="end" className="top-row">
+      {formStatus.isInvalid && (
+        <Col xs={24} sm={12}  className="col-alert">
+          <Space direction="horizontal" align="baseline">
+            <Alert
+              message="Form invalid, please fill the required field"
+              type="error"
+            />
+          </Space>
+        </Col>
+      )}
+
+      {!formStatus.isValuesEmpty && (
+        <Col xs={24} sm={12} className="col-alert">
+          <Space direction="horizontal" align="baseline">
+            <Alert
+              message="The form has been successfully submitted"
+              type="success"
+            />
+          </Space>
+        </Col>
+      )}
+
+      <Col xs={24} sm={12}  className="col-btn">
+        <Space direction="horizontal" align="baseline">
+          {formStatus.isTouched && (
+            <Form.Item>
+              <Button onClick={onCancelClick} type="text">
+                Cancel
+              </Button>
+            </Form.Item>
+          )}
           <Form.Item>
-            <Button onClick={onCancelClick} type="text">
-              Cancel
+            <Button
+              onClick={onSaveClick}
+              type="primary"
+              disabled={formStatus.isInvalid || !formStatus.isTouched}
+              htmlType="submit"
+            >
+              Save
             </Button>
           </Form.Item>
-        )}
-        <Form.Item>
-          <Button
-            onClick={onSaveClick}
-            type="primary"
-            disabled={formStatus.isInvalid || !formStatus.isTouched}
-            htmlType="submit"
-          >
-            Save
-          </Button>
-        </Form.Item>
-      </Space>
-    </Space>
+        </Space>
+      </Col>
+    </Row>
   );
 };
 

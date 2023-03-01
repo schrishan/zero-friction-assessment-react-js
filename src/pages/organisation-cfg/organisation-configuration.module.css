@@ -1,9 +1,10 @@
-.layout {
-  height: 100vh;
-}
-
 .header {
   background-color: white !important;
+}
+.header::after {
+  content: "";
+  clear: both;
+  display: table;
 }
 
 .header > div {

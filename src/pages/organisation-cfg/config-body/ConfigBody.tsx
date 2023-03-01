@@ -3,14 +3,14 @@ import {AddressCard, ContactDetailsCard, OrganizationDetailsCard} from './cards'
 
 const ConfigBody = () => {
   return (
-    <Row gutter={16}>
-      <Col span={8}>
+    <Row gutter={[16,16]}>
+          <Col xs={24} sm={12} md={8} lg={8}>
         <OrganizationDetailsCard />
-      </Col>
-      <Col span={8}>
+        </Col>
+          <Col xs={24} sm={12} md={8} lg={8}>
         <AddressCard />
-      </Col>
-      <Col span={8}>
+        </Col>
+          <Col xs={24} sm={12} md={8} lg={8}>
         <ContactDetailsCard />
       </Col>
     </Row>

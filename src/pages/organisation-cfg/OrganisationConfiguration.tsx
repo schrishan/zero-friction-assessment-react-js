@@ -13,6 +13,10 @@ const OrganisationConfiguration = () => {
   const formRef = useRef<FormInstance>(null);
   const dispatch = useDispatch();
 
+  const headerStyle: React.CSSProperties = {
+    height: 'auto',
+  };
+
   const [formStatus, setFormStatus] = useState({
     isTouched: false,
     isInvalid: false,
@@ -89,7 +93,7 @@ const OrganisationConfiguration = () => {
         layout="vertical"
         onFieldsChange={handleFormChange}
       >
-        <Header className={css["header"]}>
+        <Header className={css["header"]} style={headerStyle}>
           <TopSection
             onCancelClick={onReset}
             onSaveClick={onSave}
